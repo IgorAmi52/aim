@@ -1,0 +1,14 @@
+services:
+  database:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: aim
+      POSTGRES_PASSWORD: aim
+      POSTGRES_DB: aim
+    ports:
+      - "5432:5432"
+    volumes:
+      - database:/var/lib/postgresql/data
+
+volumes:
+  database: {}

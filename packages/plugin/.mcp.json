@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "aim": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/dist/aim.mjs",
+        "mcp"
+      ]
+    }
+  }
+}

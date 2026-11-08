@@ -1,0 +1,8 @@
+{
+  "name": "aim",
+  "private": true,
+  "packageManager": "pnpm@10.28.1",
+  "scripts": {
+    "typecheck": "pnpm --recursive typecheck"
+  }
+}

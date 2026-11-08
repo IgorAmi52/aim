@@ -1,0 +1,29 @@
+{
+  "name": "@aim/server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm run \"/^(api|worker)$/\"",
+    "api": "tsx watch --env-file-if-exists=.env src/api.ts",
+    "worker": "tsx watch --env-file-if-exists=.env src/worker.ts",
+    "database:generate": "drizzle-kit generate",
+    "database:migrate": "tsx --env-file-if-exists=.env src/database/migrate.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@aim/shared": "workspace:*",
+    "@anthropic-ai/sdk": "^1.6.0",
+    "@hono/node-server": "^2.1.6",
+    "drizzle-orm": "^0.45.4",
+    "hono": "^4.13.17",
+    "pg": "^8.23.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/pg": "^8.23.1",
+    "drizzle-kit": "^0.31.11",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
