@@ -1,0 +1,12 @@
+{
+  "name": "aim-local",
+  "description": "Local marketplace for developing and demoing aim.",
+  "owner": { "name": "aim" },
+  "plugins": [
+    {
+      "name": "aim",
+      "source": "./packages/plugin",
+      "description": "Tells you when a teammate already worked on your problem and lets you ask their session."
+    }
+  ]
+}

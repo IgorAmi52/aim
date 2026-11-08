@@ -5,6 +5,7 @@ import { z } from "zod";
 import { anthropic } from "./anthropic";
 import { configuration } from "./configuration";
 import { database } from "./database/client";
+import { demoWorkCard } from "./demo";
 import { sessions, workCards, type SessionRow, type WorkCardRow } from "./database/schema";
 import { readRawTranscript } from "./rawStore";
 import { condenseTranscript, groupEntries, parseTranscript } from "./transcript";
@@ -19,7 +20,7 @@ const workCardSchema = z.object({
   symbols: z.array(z.string()).describe("Up to 20 central identifiers: functions, classes, modules, endpoints, tables, configuration keys."),
 });
 
-type WorkCard = z.infer<typeof workCardSchema>;
+export type WorkCard = z.infer<typeof workCardSchema>;
 
 const maximumExcerptCharacters = 300_000;
 
@@ -33,6 +34,9 @@ You receive the previous card (or none) and a new excerpt of the session transcr
 - Never include secrets, credentials or personal data.`;
 
 async function updateWorkCard(previousCard: WorkCard | null, excerpt: string, session: SessionRow): Promise<WorkCard> {
+  if (configuration.AIM_DEMO_MODE) {
+    return previousCard ?? demoWorkCard(excerpt);
+  }
   const previousCardText = previousCard ? JSON.stringify(previousCard, null, 2) : "none";
   const response = await anthropic.messages.parse({
     model: configuration.AIM_DISTILL_MODEL,
@@ -63,7 +67,7 @@ function toWorkCard(row: WorkCardRow): WorkCard {
   };
 }
 
-function cardDocument(card: WorkCard): string {
+export function cardDocument(card: WorkCard): string {
   const decisions = card.decisions.map(({ decision, reason }) => `- ${decision} (${reason})`).join("\n");
   return `${card.title}\n\n${card.intent}\n\n${card.approach}\n\nDecisions:\n${decisions}\n\nSymbols: ${card.symbols.join(", ")}`;
 }

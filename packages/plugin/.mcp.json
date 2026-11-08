@@ -5,7 +5,11 @@
       "args": [
         "${CLAUDE_PLUGIN_ROOT}/dist/aim.mjs",
         "mcp"
-      ]
+      ],
+      "env": {
+        "AIM_SERVER_URL": "${user_config.server_url}",
+        "AIM_TOKEN": "${user_config.token}"
+      }
     }
   }
 }

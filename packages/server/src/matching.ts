@@ -6,6 +6,7 @@ import { anthropic } from "./anthropic";
 import { activeSessionCutoff, configuration } from "./configuration";
 import { database } from "./database/client";
 import { matches } from "./database/schema";
+import { demoJudgments } from "./demo";
 import { findActiveSessionsEditingFiles, findSimilarWorkCards, findTextMatchingWorkCards, fuseRankings } from "./retrieval";
 import {
   ensureSession,
@@ -68,6 +69,9 @@ Files also edited by the current developer: ${candidate.overlappingFiles.join(",
 }
 
 async function judgeCandidates(request: MatchRequest, current: SessionDetails, candidates: Candidate[]) {
+  if (configuration.AIM_DEMO_MODE) {
+    return demoJudgments(request.intentText, candidates);
+  }
   const currentFiles = current.session.editedFiles.slice(0, maximumListedFiles).join(", ") || "none";
   const response = await anthropic.messages.parse({
     model: configuration.AIM_JUDGE_MODEL,

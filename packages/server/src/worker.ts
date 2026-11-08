@@ -1,8 +1,10 @@
 import { setTimeout as sleep } from "node:timers/promises";
-import { assertConfigured } from "./configuration";
+import { assertConfigured, configuration } from "./configuration";
 import { distillSession, findSessionsAwaitingDistillation, postponeDistillation } from "./distiller";
 
-assertConfigured(["ANTHROPIC_API_KEY", "VOYAGE_API_KEY"]);
+if (!configuration.AIM_DEMO_MODE) {
+  assertConfigured(["ANTHROPIC_API_KEY", "VOYAGE_API_KEY"]);
+}
 
 const pollIntervalMilliseconds = 5_000;
 const batchSize = 10;

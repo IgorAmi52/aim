@@ -12,7 +12,7 @@ import { bearerAuth } from "hono/bearer-auth";
 import { HTTPException } from "hono/http-exception";
 import { z } from "zod";
 import { configuration } from "./configuration";
-import { getSessionContext } from "./context";
+import { getSessionContext, getSessionTranscriptPage } from "./context";
 import { findMatches, recordMatchAction } from "./matching";
 import { searchWorkCards } from "./search";
 import { appendTranscriptChunk, listSessionsForPerson } from "./sessions";
@@ -62,6 +62,15 @@ application.get("/sessions/:sessionId/context", async (context) => {
     return context.json({ error: "session_not_found" }, 404);
   }
   return context.json(sessionContext);
+});
+
+application.get("/sessions/:sessionId/transcript", async (context) => {
+  const page = z.coerce.number().int().positive().default(1).parse(context.req.query("page"));
+  const transcriptPage = await getSessionTranscriptPage(context.req.param("sessionId"), page);
+  if (!transcriptPage) {
+    return context.json({ error: "session_not_found" }, 404);
+  }
+  return context.json(transcriptPage);
 });
 
 application.onError((error, context) => {

@@ -1,0 +1,373 @@
+<title>aim Logo Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: a quiet specimen sheet. One card per direction: hero mark, lockup, size strip, inverse tile, rationale. */
+  :root {
+    --bg: #f5f6f9;
+    --surface: #ffffff;
+    --ink: #141726;
+    --muted: #5a6077;
+    --line: #e1e4ed;
+    --accent: #3a4de0;
+    --inverse-bg: #141726;
+    --inverse-ink: #eceef6;
+    --inverse-accent: #8c9bff;
+    --font-display: "Geist", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "Geist", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1017;
+      --surface: #161924;
+      --ink: #eceef6;
+      --muted: #9aa0b8;
+      --line: #262a38;
+      --accent: #8c9bff;
+      --inverse-bg: #f5f6f9;
+      --inverse-ink: #141726;
+      --inverse-accent: #3a4de0;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1017;
+    --surface: #161924;
+    --ink: #eceef6;
+    --muted: #9aa0b8;
+    --line: #262a38;
+    --accent: #8c9bff;
+    --inverse-bg: #f5f6f9;
+    --inverse-ink: #141726;
+    --inverse-accent: #3a4de0;
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 48px 64px;
+    display: grid;
+    gap: 36px;
+  }
+  header {
+    display: grid;
+    gap: 10px;
+    max-width: 62ch;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  header p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+    overflow: hidden;
+    min-width: 0;
+  }
+  .hero {
+    color: var(--ink);
+    --mark-accent: var(--accent);
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 10;
+    max-width: 100%;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero svg {
+    width: 38%;
+    height: auto;
+  }
+  .hero.wide svg {
+    width: 58%;
+  }
+  .strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    --mark-accent: var(--accent);
+  }
+  .lockup svg {
+    width: 30px;
+    height: 30px;
+  }
+  .lockup span {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .sizes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--ink);
+    --mark-accent: var(--accent);
+  }
+  .inverse {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    background: var(--inverse-bg);
+    color: var(--inverse-ink);
+    --mark-accent: var(--inverse-accent);
+  }
+  .inverse svg {
+    width: 24px;
+    height: 24px;
+  }
+  .size-32 { width: 32px; height: 32px; }
+  .size-16 { width: 16px; height: 16px; }
+  .caption {
+    padding: 16px 20px 20px;
+    display: grid;
+    gap: 6px;
+    align-content: start;
+  }
+  .caption h2 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .caption h2 small {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .caption p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 60ch;
+  }
+  .caption .use {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  footer {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 62ch;
+  }
+  @media (max-width: 420px) {
+    .page { padding-block: 32px 48px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="mark-overlap" viewBox="0 0 64 64">
+      <path d="M32 15.88 A18 18 0 0 1 32 48.12 A18 18 0 0 1 32 15.88 Z" style="fill: var(--mark-accent)"/>
+      <circle cx="24" cy="32" r="18" fill="none" stroke="currentColor" stroke-width="4"/>
+      <circle cx="40" cy="32" r="18" fill="none" stroke="currentColor" stroke-width="4"/>
+    </symbol>
+
+    <symbol id="mark-converge" viewBox="0 0 64 64">
+      <path d="M11 18 L25 32 L11 46" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M53 18 L39 32 L53 46" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="32" cy="32" r="5.5" style="fill: var(--mark-accent)"/>
+    </symbol>
+
+    <symbol id="mark-ping" viewBox="0 0 64 64">
+      <circle cx="18" cy="32" r="7" style="fill: var(--mark-accent)"/>
+      <path d="M29.31 20.69 A16 16 0 0 1 29.31 43.31" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+      <path d="M38.5 11.5 A29 29 0 0 1 38.5 52.5" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="mark-reticle" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="21" fill="none" stroke="currentColor" stroke-width="4.5"/>
+      <path d="M32 6 V16 M32 48 V58 M6 32 H16 M48 32 H58" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+      <circle cx="32" cy="32" r="6" style="fill: var(--mark-accent)"/>
+    </symbol>
+
+    <symbol id="mark-link" viewBox="0 0 64 64">
+      <path d="M17 38 C 17 16, 47 16, 47 38" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="0.1 8.5"/>
+      <circle cx="17" cy="42" r="8" fill="none" stroke="currentColor" stroke-width="4.5"/>
+      <circle cx="47" cy="42" r="8" style="fill: var(--mark-accent)"/>
+    </symbol>
+
+    <symbol id="mark-wordmark" viewBox="0 6 92 52">
+      <circle cx="18" cy="40" r="11" fill="none" stroke="currentColor" stroke-width="7"/>
+      <path d="M29 29 V51 M42 29 V51 M55 51 V37 A8 8 0 0 1 71 37 V51 M71 37 A8 8 0 0 1 87 37 V51" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="42" cy="15.5" r="5" style="fill: var(--mark-accent)"/>
+    </symbol>
+
+    <symbol id="mark-tittle" viewBox="0 0 64 64">
+      <path d="M32 30 V52" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="32" cy="16" r="9" fill="none" stroke="currentColor" stroke-width="3.5"/>
+      <circle cx="32" cy="16" r="3.5" style="fill: var(--mark-accent)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="page">
+  <header>
+    <span class="eyebrow">aim · identity exploration</span>
+    <h1>Six directions for the aim mark</h1>
+    <p>Each one is a single ink colour plus one accent dot or shape, so it works as a terminal-sized favicon, a plugin icon and a wordmark. The accent always marks the same idea: the place where your work meets someone else's.</p>
+  </header>
+
+  <section class="grid" aria-label="Logo directions">
+    <article class="card">
+      <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Overlap mark"><use href="#mark-overlap"/></svg></div>
+      <div class="strip">
+        <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mark-overlap"/></svg><span>aim</span></div>
+        <div class="sizes">
+          <svg viewBox="0 0 64 64" class="size-32" aria-hidden="true"><use href="#mark-overlap"/></svg>
+          <svg viewBox="0 0 64 64" class="size-16" aria-hidden="true"><use href="#mark-overlap"/></svg>
+          <div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mark-overlap"/></svg></div>
+        </div>
+      </div>
+      <div class="caption">
+        <h2>Overlap <small>A</small></h2>
+        <p>Two sessions as two rings; the shared part lights up. It is the product in one shape: aim finds the intersection between your work and a teammate's.</p>
+        <span class="use">Strongest meaning · reads well down to 16 px</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Converge mark"><use href="#mark-converge"/></svg></div>
+      <div class="strip">
+        <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mark-converge"/></svg><span>aim</span></div>
+        <div class="sizes">
+          <svg viewBox="0 0 64 64" class="size-32" aria-hidden="true"><use href="#mark-converge"/></svg>
+          <svg viewBox="0 0 64 64" class="size-16" aria-hidden="true"><use href="#mark-converge"/></svg>
+          <div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mark-converge"/></svg></div>
+        </div>
+      </div>
+      <div class="caption">
+        <h2>Converge <small>B</small></h2>
+        <p>Two terminal prompts pointing at the same spot. Two agents heading for the same problem, caught before they collide. Feels native next to Claude Code.</p>
+        <span class="use">Most developer-flavoured · simple at every size</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Ping mark"><use href="#mark-ping"/></svg></div>
+      <div class="strip">
+        <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mark-ping"/></svg><span>aim</span></div>
+        <div class="sizes">
+          <svg viewBox="0 0 64 64" class="size-32" aria-hidden="true"><use href="#mark-ping"/></svg>
+          <svg viewBox="0 0 64 64" class="size-16" aria-hidden="true"><use href="#mark-ping"/></svg>
+          <div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mark-ping"/></svg></div>
+        </div>
+      </div>
+      <div class="caption">
+        <h2>Ping <small>C</small></h2>
+        <p>A dot sending a signal. aim speaks up on its own, quietly, while you work. Good for notifications and the moment the picker appears.</p>
+        <span class="use">Best as an alert badge · close to generic "broadcast"</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Reticle mark"><use href="#mark-reticle"/></svg></div>
+      <div class="strip">
+        <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mark-reticle"/></svg><span>aim</span></div>
+        <div class="sizes">
+          <svg viewBox="0 0 64 64" class="size-32" aria-hidden="true"><use href="#mark-reticle"/></svg>
+          <svg viewBox="0 0 64 64" class="size-16" aria-hidden="true"><use href="#mark-reticle"/></svg>
+          <div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mark-reticle"/></svg></div>
+        </div>
+      </div>
+      <div class="caption">
+        <h2>Reticle <small>D</small></h2>
+        <p>The literal reading of the name: a crosshair with the accent on target. Instantly understood, but it says "aim" more than it says what aim does.</p>
+        <span class="use">Most literal · many products already use a target</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Link mark"><use href="#mark-link"/></svg></div>
+      <div class="strip">
+        <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mark-link"/></svg><span>aim</span></div>
+        <div class="sizes">
+          <svg viewBox="0 0 64 64" class="size-32" aria-hidden="true"><use href="#mark-link"/></svg>
+          <svg viewBox="0 0 64 64" class="size-16" aria-hidden="true"><use href="#mark-link"/></svg>
+          <div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mark-link"/></svg></div>
+        </div>
+      </div>
+      <div class="caption">
+        <h2>Link <small>E</small></h2>
+        <p>You (open ring) and the teammate who already did it (filled), joined by a dotted thread. Puts the people at the centre: aim's job ends in a conversation.</p>
+        <span class="use">Warmest · the dotted arc softens below 24 px</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="hero wide"><svg role="img" aria-label="aim wordmark" viewBox="0 6 92 52"><use href="#mark-wordmark"/></svg></div>
+      <div class="strip">
+        <div class="lockup"><svg aria-hidden="true" viewBox="0 0 64 64" style="width:30px;height:30px"><use href="#mark-tittle"/></svg><span>aim</span></div>
+        <div class="sizes">
+          <svg viewBox="0 0 64 64" class="size-32" aria-hidden="true"><use href="#mark-tittle"/></svg>
+          <svg viewBox="0 0 64 64" class="size-16" aria-hidden="true"><use href="#mark-tittle"/></svg>
+          <div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mark-tittle"/></svg></div>
+        </div>
+      </div>
+      <div class="caption">
+        <h2>Signal dot <small>F</small></h2>
+        <p>A drawn lowercase wordmark where the dot of the i is the accent. The icon is that i on its own, its dot held in a ring like a sight. Quietest, and the most ownable.</p>
+        <span class="use">Wordmark-first · icon is the i, works as an app tile</span>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    <p>My pick is Overlap (A) for meaning, or Signal dot (F) if you want aim to look calm and wordmark-led. Pick one and I'll refine its proportions and export SVG and PNG files for the plugin, the README and Loom.</p>
+  </footer>
+</main>

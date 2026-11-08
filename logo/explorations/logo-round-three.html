@@ -1,0 +1,389 @@
+<title>aim Logo Round Three</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: one specimen grid of twelve new concepts; each card = hero, lockup + size strip, caption. */
+  :root {
+    --bg: #f5f6f9;
+    --surface: #ffffff;
+    --ink: #141726;
+    --muted: #5a6077;
+    --line: #e1e4ed;
+    --accent: #3a4de0;
+    --inverse-bg: #141726;
+    --inverse-ink: #eceef6;
+    --inverse-accent: #8c9bff;
+    --font-display: "Geist", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "Geist", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1017;
+      --surface: #161924;
+      --ink: #eceef6;
+      --muted: #9aa0b8;
+      --line: #262a38;
+      --accent: #8c9bff;
+      --inverse-bg: #f5f6f9;
+      --inverse-ink: #141726;
+      --inverse-accent: #3a4de0;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1017;
+    --surface: #161924;
+    --ink: #eceef6;
+    --muted: #9aa0b8;
+    --line: #262a38;
+    --accent: #8c9bff;
+    --inverse-bg: #f5f6f9;
+    --inverse-ink: #141726;
+    --inverse-accent: #3a4de0;
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 48px 64px;
+    display: grid;
+    gap: 44px;
+  }
+  header, .family-head {
+    display: grid;
+    gap: 8px;
+    max-width: 64ch;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h2.family {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  header p, .family-head p {
+    margin: 0;
+    color: var(--muted);
+  }
+  section.family-block {
+    display: grid;
+    gap: 18px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    overflow: hidden;
+    min-width: 0;
+  }
+  .hero, .lockup, .sizes {
+    color: var(--ink);
+    --mark-accent: var(--accent);
+    --mark-knockout: var(--surface);
+  }
+  .hero {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 10;
+    max-width: 100%;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero svg { width: 36%; height: auto; }
+  .hero.wide svg { width: 60%; }
+  .strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lockup svg { width: 30px; height: 30px; }
+  .lockup svg.word { width: 78px; height: auto; }
+  .lockup span {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .sizes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .size-32 { width: 32px; height: 32px; }
+  .size-16 { width: 16px; height: 16px; }
+  .inverse {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    background: var(--inverse-bg);
+    color: var(--inverse-ink);
+    --mark-accent: var(--inverse-accent);
+    --mark-knockout: var(--inverse-bg);
+  }
+  .inverse svg { width: 26px; height: 26px; }
+  .caption {
+    padding: 14px 18px 18px;
+    display: grid;
+    gap: 4px;
+    align-content: start;
+  }
+  .caption h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .caption h3 small {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .caption .use { font-family: var(--font-mono); font-size: 12px; }
+  .caption p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 60ch;
+  }
+  footer {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 64ch;
+  }
+  @media (max-width: 420px) {
+    .page { padding-block: 32px 48px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>    <symbol id="n1" viewBox="0 0 64 64">
+      <defs>
+        <linearGradient id="n1-bridge" gradientUnits="userSpaceOnUse" x1="20" y1="0" x2="44" y2="0">
+          <stop offset="0" style="stop-color: currentColor"/>
+          <stop offset="1" style="stop-color: var(--mark-accent)"/>
+        </linearGradient>
+      </defs>
+      <path d="M20 21 C 28 27.5, 36 27.5, 44 21 L44 43 C 36 36.5, 28 36.5, 20 43 Z" fill="url(#n1-bridge)"/>
+      <circle cx="20" cy="32" r="12" fill="currentColor"/>
+      <circle cx="44" cy="32" r="12" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="n2" viewBox="0 0 64 64">
+      <rect x="16" y="12" width="32" height="40" rx="9" fill="none" stroke-width="2.5" stroke-dasharray="3 4" style="stroke: var(--mark-accent)"/>
+      <rect x="5" y="20" width="39" height="10" rx="5" fill="currentColor"/>
+      <rect x="20" y="34" width="39" height="10" rx="5" fill="currentColor" opacity="0.4"/>
+    </symbol>
+    <symbol id="n3" viewBox="0 0 64 64">
+      <path d="M11 53 L27.5 24 M53 53 L36.5 24" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linecap="round"/>
+      <circle cx="32" cy="14" r="5.5" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="n4" viewBox="0 0 64 64">
+      <path d="M7 32 Q32 6 57 32 Q32 58 7 32 Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
+      <circle cx="32" cy="32" r="7.5" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="n5" viewBox="0 0 64 64">
+      <path d="M15 8 H31 A9 9 0 0 1 40 17 V23 A9 9 0 0 1 31 32 H22 L13 39 V32 A9 9 0 0 1 6 23 V17 A9 9 0 0 1 15 8 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M33 26 H49 A9 9 0 0 1 58 35 V41 A9 9 0 0 1 51 50 V57 L42 50 H33 A9 9 0 0 1 24 41 V35 A9 9 0 0 1 33 26 Z" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="n6" viewBox="0 0 64 64">
+      <circle cx="27" cy="37" r="13" fill="none" stroke="currentColor" stroke-width="6.5"/>
+      <path d="M40 22 V50" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linecap="round"/>
+      <circle cx="27" cy="37" r="4.5" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="n7" viewBox="0 0 64 64">
+      <rect x="2" y="2" width="60" height="60" rx="15" fill="currentColor"/>
+      <path d="M15 24 L25 32 L15 40" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--mark-knockout)"/>
+      <rect x="31" y="36" width="17" height="6" rx="2" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="n8" viewBox="0 0 64 64">
+      <rect x="2" y="2" width="60" height="60" rx="15" fill="currentColor"/>
+      <path d="M32 31 V48" fill="none" stroke-width="8" stroke-linecap="round" style="stroke: var(--mark-knockout)"/>
+      <circle cx="32" cy="18" r="5.5" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="n9" viewBox="0 0 64 64">
+      <path d="M30 11 A19 19 0 0 0 30 49 Z" fill="currentColor"/>
+      <path d="M34 17 A19 19 0 0 1 34 55 Z" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="n10" viewBox="0 0 64 64">
+      <ellipse cx="32" cy="32" rx="25" ry="10" transform="rotate(-28 32 32)" fill="none" stroke="currentColor" stroke-width="3.5"/>
+      <circle cx="32" cy="32" r="7.5" style="fill: var(--mark-accent)"/>
+      <circle cx="54.07" cy="20.26" r="4" fill="currentColor"/>
+    </symbol>
+    <symbol id="n11" viewBox="0 0 64 64">
+      <rect x="8" y="8" width="32" height="32" rx="8" fill="none" stroke="currentColor" stroke-width="4"/>
+      <rect x="24" y="24" width="32" height="32" rx="8" fill="none" stroke="currentColor" stroke-width="4"/>
+      <path d="M24 32 A8 8 0 0 1 32 24 H40 V32 A8 8 0 0 1 32 40 H24 Z" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="n12" viewBox="0 0 64 64">
+      <circle cx="25" cy="40" r="12" fill="none" stroke="currentColor" stroke-width="7"/>
+      <path d="M37 29 V52" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="37" cy="15" r="5.5" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="n12-word" viewBox="0 2 82 56">
+      <circle cx="18" cy="42" r="11" fill="none" stroke="currentColor" stroke-width="7"/>
+      <path d="M29 31 V53 M42 53 V39 A8 8 0 0 1 58 39 V53 M58 39 A8 8 0 0 1 74 39 V53" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="29" cy="18" r="5" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="n7-word" viewBox="0 0 110 40">
+      <text x="2" y="30" style="font-family: var(--font-mono); font-weight: 500; font-size: 32px; fill: currentColor; letter-spacing: -0.02em">aim</text>
+      <rect x="63" y="25" width="17" height="6" rx="2" style="fill: var(--mark-accent)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="page">
+  <header>
+    <span class="eyebrow">aim · identity, round three</span>
+    <h1>Twelve new directions</h1>
+    <p>A wider spread this time: merging shapes, overlapping timelines, letter monograms, app tiles and a terminal wordmark. Each still uses one ink colour and one accent for the point where two pieces of work meet.</p>
+  </header>
+  <section class="grid" aria-label="Logo concepts">
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Merge mark"><use href="#n1"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n1"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#n1"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#n1"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n1"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Merge <small>N1</small></h3><p>Two sessions flowing into each other, ink becoming accent. Soft and organic; says sync without any arrows.</p><p class="use">Most expressive · gradient needs a flat fallback for tiny sizes</p></div>
+      </article>
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Lanes mark"><use href="#n2"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n2"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#n2"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#n2"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n2"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Lanes <small>N2</small></h3><p>Two sessions as timeline bars; the dashed frame marks the stretch where they overlap. Very close to what aim actually computes.</p><p class="use">Most literal to the product · busy at 16 px</p></div>
+      </article>
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Peak mark"><use href="#n3"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n3"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#n3"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#n3"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n3"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Peak <small>N3</small></h3><p>Two paths climbing toward the same point, with the accent waiting at the top. Doubles as a sharp, quiet A.</p><p class="use">Strong silhouette · reads as A and as convergence</p></div>
+      </article>
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Aperture mark"><use href="#n4"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n4"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#n4"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#n4"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n4"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Aperture <small>N4</small></h3><p>An eye that notices for you. aim watches the team's work so you don't have to. Simple and memorable.</p><p class="use">Memorable · might read as surveillance, a risk for a privacy-sensitive tool</p></div>
+      </article>
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Talk mark"><use href="#n5"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n5"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#n5"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#n5"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n5"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Talk <small>N5</small></h3><p>Two speech bubbles overlapping: you and the other session in conversation. Leans into the peer agent.</p><p class="use">Friendly · bubbles are a crowded category</p></div>
+      </article>
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Bowl mark"><use href="#n6"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n6"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#n6"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#n6"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n6"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Bowl <small>N6</small></h3><p>A lowercase a whose bowl is a scope with the accent at its centre. Takes the F idea into the first letter instead of the i.</p><p class="use">Monogram · works as an app icon and inside the wordmark</p></div>
+      </article>
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Prompt mark"><use href="#n7"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n7"/></svg><svg class="word" viewBox="0 0 110 40" aria-hidden="true"><use href="#n7-word"/></svg></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#n7"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#n7"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n7"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Prompt <small>N7</small></h3><p>A terminal prompt with an accent cursor, on a solid tile. Pure Claude Code territory; the wordmark is set in mono with the same cursor.</p><p class="use">Most developer-native · less specific to aim's idea</p></div>
+      </article>
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Tile i mark"><use href="#n8"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n8"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#n8"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#n8"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n8"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Tile i <small>N8</small></h3><p>A solid tile with the i cut out and its dot lit. The cleanest app-store style icon of the set.</p><p class="use">Cleanest icon · relies on the wordmark for meaning</p></div>
+      </article>
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Halves mark"><use href="#n9"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n9"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#n9"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#n9"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n9"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Halves <small>N9</small></h3><p>Two half-circles slightly out of step, about to lock into one. Your work and theirs, almost in sync.</p><p class="use">Abstract · bold at any size</p></div>
+      </article>
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Orbit mark"><use href="#n10"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n10"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#n10"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#n10"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n10"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Orbit <small>N10</small></h3><p>A teammate's session circling the work you share. Implies a system that keeps track of everyone.</p><p class="use">Space-y · common shape in tech logos</p></div>
+      </article>
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Windows mark"><use href="#n11"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n11"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#n11"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#n11"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n11"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Windows <small>N11</small></h3><p>Two session windows stacked; the overlap becomes a leaf of accent. A sharper, more structured take on the overlap idea.</p><p class="use">Clear meaning · the leaf is a distinctive detail</p></div>
+      </article>
+      <article class="card">
+        <div class="hero wide"><svg viewBox="0 2 82 56" role="img" aria-label="ai ligature wordmark"><use href="#n12-word"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n12"/></svg><svg class="word" viewBox="0 2 82 56" aria-hidden="true"><use href="#n12-word"/></svg></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#n12"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#n12"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#n12"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>ai ligature <small>N12</small></h3><p>The a and the i share one stem, so aim reads as a, i, m with only two letters drawn before the m. The lit dot sits on the shared stem.</p><p class="use">Ownable wordmark trick · hints at AI without saying it</p></div>
+      </article>
+  </section>
+  <footer>
+    <p>Pick the ones that feel closest, even loosely, and say what you dislike about the rest (too thin, too literal, too techy, the blue). That tells me more than another round of guesses.</p>
+  </footer>
+</main>

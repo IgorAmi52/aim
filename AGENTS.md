@@ -113,6 +113,8 @@ Matching runs across all repos. Same-repo and file-overlap signals rank higher; 
 
 `GET /sessions/:sessionId/context?focus=<text>` → session summary, approach, decisions, owner, and up to 6 excerpts. The condensed transcript is split into ~6K-character passages. With `focus`, Voyage `rerank-3-lite` picks the most relevant passages (from the latest 200) and returns them in chronological order; without it, the latest passages are returned. Excerpts are already redacted.
 
+`GET /sessions/:sessionId/transcript?page=N` → `{ page, pageCount, text }`: the whole condensed session in ~60K-character pages (~15K tokens, under Claude Code's MCP output limit). The peer agent reads every page so it knows the entire session. On a real 5.6 MB session that was 4 pages, ~50K tokens.
+
 ### People / Slack
 
 - Resolve `email → slack_user_id` via Slack `users.lookupByEmail` (bot token on server), cached in `people`; misses are retried after a day. Owners in match, search and context responses carry `slack: { userId, deepLink }` or `null`.
@@ -187,7 +189,9 @@ Claude then records the choice (`report_match_action`) and acts on it. Peer agen
 
 ### Peer agent
 
-`agents/peer.md` (`aim:peer`) can only call `get_session_context`. It answers from the work card and the reranked excerpts, says when something isn't in the session, speaks about the owner in the third person, and never commits them to anything. When the developers need to settle something, it ends with a **Proposed agreement** the developer can send to the owner.
+`agents/peer.md` (`aim:peer`) can only call `get_session_context` and `read_session_transcript`. On start it loads the work card and reads the **whole condensed session**. Above 8 pages it reads the first and last 7 and uses focused excerpts for the rest. It answers from that, says when something isn't in the session, speaks about the owner in the third person, and never commits them to anything. When the developers need to settle something, it ends with a **Proposed agreement** the developer can send to the owner.
+
+The conversation is relayed by the main Claude: after the first answer, the injected instructions tell Claude to send every follow-up question about that work to the same `aim:peer` agent, continuing it rather than starting a new one, and to show its answers as they are, until the developer is done. A direct chat (`claude --agent aim:peer "<sessionId> …"`) is possible later.
 
 ### MCP tools
 
@@ -197,6 +201,7 @@ Claude sees them as `mcp__plugin_aim_aim__<tool>`.
 |---|---|
 | `search` | Search teammates' sessions (optionally this repo only). |
 | `get_session_context` | Work card, owner and focused excerpts for a session. |
+| `read_session_transcript` | One page of the whole condensed session. |
 | `report_match_action` | Record the developer's choice on a match. |
 | `status` | Repo, enabled flag, git identity, recently uploaded sessions. |
 | `set_repository_enabled` | Opt the current repo in or out. |
@@ -250,6 +255,8 @@ pnpm --filter @aim/plugin build         # bundles packages/plugin/dist/aim.mjs
 claude --plugin-dir packages/plugin      # load the plugin in Claude Code
 pnpm typecheck
 ```
+
+Demo without API keys: `AIM_DEMO_MODE=true` (see `packages/server/.env.demo`) swaps embeddings, judge, reranking, distillation and Slack for local fakes (`packages/server/src/demo.ts`); `demo/README.md` has the recording runbook.
 
 Schema changes: edit `packages/server/src/database/schema.ts`, then `pnpm --filter @aim/server database:generate` and commit the generated SQL in `packages/server/drizzle/`. Raw transcripts are stored in `packages/server/data/raw/` (S3 in production).
 

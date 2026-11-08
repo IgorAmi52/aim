@@ -1,0 +1,427 @@
+<title>aim Logo Refinements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: specimen sheet in two families (B Converge, F Signal dot); each card = hero, lockup + size strip, caption. */
+  :root {
+    --bg: #f5f6f9;
+    --surface: #ffffff;
+    --ink: #141726;
+    --muted: #5a6077;
+    --line: #e1e4ed;
+    --accent: #3a4de0;
+    --inverse-bg: #141726;
+    --inverse-ink: #eceef6;
+    --inverse-accent: #8c9bff;
+    --font-display: "Geist", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "Geist", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1017;
+      --surface: #161924;
+      --ink: #eceef6;
+      --muted: #9aa0b8;
+      --line: #262a38;
+      --accent: #8c9bff;
+      --inverse-bg: #f5f6f9;
+      --inverse-ink: #141726;
+      --inverse-accent: #3a4de0;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1017;
+    --surface: #161924;
+    --ink: #eceef6;
+    --muted: #9aa0b8;
+    --line: #262a38;
+    --accent: #8c9bff;
+    --inverse-bg: #f5f6f9;
+    --inverse-ink: #141726;
+    --inverse-accent: #3a4de0;
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 48px 64px;
+    display: grid;
+    gap: 44px;
+  }
+  header, .family-head {
+    display: grid;
+    gap: 8px;
+    max-width: 64ch;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h2.family {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  header p, .family-head p {
+    margin: 0;
+    color: var(--muted);
+  }
+  section.family-block {
+    display: grid;
+    gap: 18px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    overflow: hidden;
+    min-width: 0;
+  }
+  .hero, .lockup, .sizes {
+    color: var(--ink);
+    --mark-accent: var(--accent);
+    --mark-knockout: var(--surface);
+  }
+  .hero {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 10;
+    max-width: 100%;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero svg { width: 36%; height: auto; }
+  .hero.wide svg { width: 60%; }
+  .strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lockup svg { width: 30px; height: 30px; }
+  .lockup svg.word { width: 78px; height: auto; }
+  .lockup span {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .sizes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .size-32 { width: 32px; height: 32px; }
+  .size-16 { width: 16px; height: 16px; }
+  .inverse {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    background: var(--inverse-bg);
+    color: var(--inverse-ink);
+    --mark-accent: var(--inverse-accent);
+    --mark-knockout: var(--inverse-bg);
+  }
+  .inverse svg { width: 26px; height: 26px; }
+  .caption {
+    padding: 14px 18px 18px;
+    display: grid;
+    gap: 4px;
+    align-content: start;
+  }
+  .caption h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .caption h3 small {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .caption p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 60ch;
+  }
+  footer {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 64ch;
+  }
+  @media (max-width: 420px) {
+    .page { padding-block: 32px 48px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- B · Converge -->
+    <symbol id="b1" viewBox="0 0 64 64">
+      <path d="M12 20 L23 32 L12 44 M52 20 L41 32 L52 44" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="32" cy="32" r="4.5" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="b2" viewBox="0 0 64 64">
+      <path d="M12 19 L25 32 L12 45 Z M52 19 L39 32 L52 45 Z" fill="currentColor" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+      <circle cx="32" cy="32" r="3" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="b3" viewBox="0 0 64 64">
+      <path d="M12 20 L23 32 L12 44" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M52 20 L41 32 L52 44" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.38"/>
+      <circle cx="32" cy="32" r="4.5" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="b4" viewBox="0 0 64 64">
+      <rect x="2" y="2" width="60" height="60" rx="16" fill="currentColor"/>
+      <path d="M17 22 L26 32 L17 42 M47 22 L38 32 L47 42" fill="none" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--mark-knockout)"/>
+      <circle cx="32" cy="32" r="3.6" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="b5" viewBox="0 0 64 64">
+      <path d="M24 12 A26 26 0 0 0 24 52 M40 12 A26 26 0 0 1 40 52" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
+      <circle cx="32" cy="32" r="6" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="b6" viewBox="0 0 64 64">
+      <path d="M5 23 L13 32 L5 41 M59 23 L51 32 L59 41" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.32"/>
+      <path d="M17 22 L26 32 L17 42 M47 22 L38 32 L47 42" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="32" cy="32" r="3.2" style="fill: var(--mark-accent)"/>
+    </symbol>
+
+    <!-- F · Signal dot: letters without the tittle -->
+    <symbol id="aim-letters" viewBox="0 2 92 56">
+      <circle cx="18" cy="42" r="11" fill="none" stroke="currentColor" stroke-width="7"/>
+      <path d="M29 31 V53 M42 31 V53 M55 53 V39 A8 8 0 0 1 71 39 V53 M71 39 A8 8 0 0 1 87 39 V53" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- F tittles, drawn in a 22-unit box centred on 0,0 -->
+    <symbol id="t-ring" viewBox="-11 -11 22 22">
+      <circle r="7.4" fill="none" stroke="currentColor" stroke-width="2.6"/>
+      <circle r="3.3" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="t-ticks" viewBox="-11 -11 22 22">
+      <path d="M0 -9.6 V-6 M0 6 V9.6 M-9.6 0 H-6 M6 0 H9.6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      <circle r="3.8" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="t-open" viewBox="-11 -11 22 22">
+      <path d="M7.05 2.57 A7.5 7.5 0 0 1 2.57 7.05 M-2.57 7.05 A7.5 7.5 0 0 1 -7.05 2.57 M-7.05 -2.57 A7.5 7.5 0 0 1 -2.57 -7.05 M2.57 -7.05 A7.5 7.5 0 0 1 7.05 -2.57" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+      <circle r="3.2" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="t-halo" viewBox="-11 -11 22 22">
+      <circle r="9" style="fill: var(--mark-accent)" opacity="0.2"/>
+      <circle r="4.4" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="t-corners" viewBox="-11 -11 22 22">
+      <path d="M-8.5 -4 V-8.5 H-4 M4 -8.5 H8.5 V-4 M8.5 4 V8.5 H4 M-4 8.5 H-8.5 V4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle r="3.4" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="t-bullseye" viewBox="-11 -11 22 22">
+      <circle r="8.8" style="fill: var(--mark-accent)"/>
+      <circle r="5.6" style="fill: var(--mark-knockout)"/>
+      <circle r="3" style="fill: var(--mark-accent)"/>
+    </symbol>
+
+    <!-- F wordmarks: letters + tittle centred over the i at (42, 15) -->
+    <symbol id="f1" viewBox="0 2 92 56"><use href="#aim-letters"/><use href="#t-ring" x="32.1" y="5.1" width="19.8" height="19.8"/></symbol>
+    <symbol id="f2" viewBox="0 2 92 56"><use href="#aim-letters"/><use href="#t-ticks" x="32.1" y="5.1" width="19.8" height="19.8"/></symbol>
+    <symbol id="f3" viewBox="0 2 92 56"><use href="#aim-letters"/><use href="#t-open" x="32.1" y="5.1" width="19.8" height="19.8"/></symbol>
+    <symbol id="f4" viewBox="0 2 92 56"><use href="#aim-letters"/><use href="#t-halo" x="32.1" y="5.1" width="19.8" height="19.8"/></symbol>
+    <symbol id="f5" viewBox="0 2 92 56"><use href="#aim-letters"/><use href="#t-corners" x="32.1" y="5.1" width="19.8" height="19.8"/></symbol>
+    <symbol id="f6" viewBox="0 2 92 56"><use href="#aim-letters"/><use href="#t-bullseye" x="32.1" y="5.1" width="19.8" height="19.8"/></symbol>
+
+    <!-- F icons: the i alone -->
+    <symbol id="i-stem" viewBox="0 0 64 64">
+      <path d="M32 34 V55" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="fi1" viewBox="0 0 64 64"><use href="#i-stem"/><use href="#t-ring" x="16" y="0" width="32" height="32"/></symbol>
+    <symbol id="fi2" viewBox="0 0 64 64"><use href="#i-stem"/><use href="#t-ticks" x="16" y="0" width="32" height="32"/></symbol>
+    <symbol id="fi3" viewBox="0 0 64 64"><use href="#i-stem"/><use href="#t-open" x="16" y="0" width="32" height="32"/></symbol>
+    <symbol id="fi4" viewBox="0 0 64 64"><use href="#i-stem"/><use href="#t-halo" x="16" y="0" width="32" height="32"/></symbol>
+    <symbol id="fi5" viewBox="0 0 64 64"><use href="#i-stem"/><use href="#t-corners" x="16" y="0" width="32" height="32"/></symbol>
+    <symbol id="fi6" viewBox="0 0 64 64"><use href="#i-stem"/><use href="#t-bullseye" x="16" y="0" width="32" height="32"/></symbol>
+  </defs>
+</svg>
+
+<main class="page">
+  <header>
+    <span class="eyebrow">aim · identity, round two</span>
+    <h1>Converge and Signal dot, refined</h1>
+    <p>Six takes on each direction. Converge works on the feeling of two sessions syncing toward one point. Signal dot turns the dot of the i into a scope, kept light enough to sit inside a wordmark.</p>
+  </header>
+
+  <section class="family-block" aria-labelledby="family-b">
+    <div class="family-head">
+      <span class="eyebrow">Direction B</span>
+      <h2 class="family" id="family-b">Converge</h2>
+      <p>Two prompts moving toward the same spot. The accent is the moment they meet.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Converge, tight"><use href="#b1"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#b1"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#b1"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#b1"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#b1"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Tight <small>B1</small></h3><p>Square 90° chevrons, heavier stroke, the dot held just short of both tips. The same idea as before, with calmer proportions.</p></div>
+      </article>
+
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Converge, solid"><use href="#b2"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#b2"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#b2"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#b2"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#b2"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Solid <small>B2</small></h3><p>Filled, rounded arrowheads with a spark between them. Reads as one bold shape from a distance, like play controls meeting.</p></div>
+      </article>
+
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Converge, two-tone"><use href="#b3"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#b3"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#b3"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#b3"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#b3"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Two-tone <small>B3</small></h3><p>Your session in full ink, the teammate's session faded, because it happened elsewhere or earlier. Tells the story of aim most directly.</p></div>
+      </article>
+
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Converge, app tile"><use href="#b4"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#b4"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#b4"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#b4"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#b4"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>App tile <small>B4</small></h3><p>B1 knocked out of a rounded square. Made for the plugin icon, the Slack avatar and favicons, where a bare mark looks thin.</p></div>
+      </article>
+
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Converge, parentheses"><use href="#b5"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#b5"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#b5"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#b5"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#b5"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Parentheses <small>B5</small></h3><p>The chevrons softened into two arcs closing around one point. Friendlier and more "in sync" than "about to collide".</p></div>
+      </article>
+
+      <article class="card">
+        <div class="hero"><svg viewBox="0 0 64 64" role="img" aria-label="Converge, echo"><use href="#b6"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#b6"/></svg><span>aim</span></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#b6"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#b6"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#b6"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Echo <small>B6</small></h3><p>A faded trail behind each chevron adds motion: both sessions are moving toward each other. Best large; at 16 px the trail drops out.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="family-block" aria-labelledby="family-f">
+    <div class="family-head">
+      <span class="eyebrow">Direction F</span>
+      <h2 class="family" id="family-f">Signal dot</h2>
+      <p>The drawn wordmark stays the same; only the dot of the i changes. The small icon is the i alone, the same way the dot shows up as a scope while aim is watching.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="hero wide"><svg viewBox="0 2 92 56" role="img" aria-label="aim wordmark, ring"><use href="#f1"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#fi1"/></svg><svg class="word" viewBox="0 2 92 56" aria-hidden="true"><use href="#f1"/></svg></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#fi1"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#fi1"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#fi1"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Ring <small>F1</small></h3><p>A thin ring around the accent dot, lighter than the letter strokes so it reads as a sight sitting above the word.</p></div>
+      </article>
+
+      <article class="card">
+        <div class="hero wide"><svg viewBox="0 2 92 56" role="img" aria-label="aim wordmark, ticks"><use href="#f2"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#fi2"/></svg><svg class="word" viewBox="0 2 92 56" aria-hidden="true"><use href="#f2"/></svg></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#fi2"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#fi2"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#fi2"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Ticks <small>F2</small></h3><p>Four short crosshair ticks and no ring. The most minimal scope: the dot looks locked on without any extra outline.</p></div>
+      </article>
+
+      <article class="card">
+        <div class="hero wide"><svg viewBox="0 2 92 56" role="img" aria-label="aim wordmark, open ring"><use href="#f3"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#fi3"/></svg><svg class="word" viewBox="0 2 92 56" aria-hidden="true"><use href="#f3"/></svg></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#fi3"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#fi3"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#fi3"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Open ring <small>F3</small></h3><p>The ring broken at the four cardinal points, the classic scope reticle, drawn delicately. Feels precise and a little technical.</p></div>
+      </article>
+
+      <article class="card">
+        <div class="hero wide"><svg viewBox="0 2 92 56" role="img" aria-label="aim wordmark, halo"><use href="#f4"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#fi4"/></svg><svg class="word" viewBox="0 2 92 56" aria-hidden="true"><use href="#f4"/></svg></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#fi4"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#fi4"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#fi4"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Halo <small>F4</small></h3><p>The dot with a soft glow instead of a hard ring, like a status light that just came on. The prettiest and the least literal.</p></div>
+      </article>
+
+      <article class="card">
+        <div class="hero wide"><svg viewBox="0 2 92 56" role="img" aria-label="aim wordmark, focus corners"><use href="#f5"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#fi5"/></svg><svg class="word" viewBox="0 2 92 56" aria-hidden="true"><use href="#f5"/></svg></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#fi5"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#fi5"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#fi5"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Focus corners <small>F5</small></h3><p>Camera focus brackets around the dot: aim has found something and is showing it to you. Modern, and clearly different from a gun sight.</p></div>
+      </article>
+
+      <article class="card">
+        <div class="hero wide"><svg viewBox="0 2 92 56" role="img" aria-label="aim wordmark, bullseye"><use href="#f6"/></svg></div>
+        <div class="strip">
+          <div class="lockup"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#fi6"/></svg><svg class="word" viewBox="0 2 92 56" aria-hidden="true"><use href="#f6"/></svg></div>
+          <div class="sizes"><svg class="size-32" viewBox="0 0 64 64" aria-hidden="true"><use href="#fi6"/></svg><svg class="size-16" viewBox="0 0 64 64" aria-hidden="true"><use href="#fi6"/></svg><div class="inverse"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#fi6"/></svg></div></div>
+        </div>
+        <div class="caption"><h3>Bullseye <small>F6</small></h3><p>Solid accent rings instead of outlines. The heaviest dot, so it holds up best at 16 px and on busy backgrounds.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <p>One thing worth trying next: the two directions can meet. B3's faded-and-full chevrons as the icon, F's wordmark beside it, with the same accent dot carried through both. Tell me which numbers you like and I'll combine or refine them.</p>
+  </footer>
+</main>

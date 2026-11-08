@@ -3,7 +3,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import { runInBackground } from "./background";
-import { getSessionContext, listSessions, recordMatchAction, searchSessions } from "./client";
+import { getSessionContext, getSessionTranscriptPage, listSessions, recordMatchAction, searchSessions } from "./client";
 import { projectDirectory } from "./configuration";
 import { gitIdentity, repositoryInformation } from "./git";
 import { findHistoricalSessions } from "./history";
@@ -70,6 +70,19 @@ export async function startMcpServer(): Promise<void> {
       },
     },
     ({ sessionId, focus }) => safely(() => getSessionContext(sessionId, focus)),
+  );
+
+  server.registerTool(
+    "read_session_transcript",
+    {
+      description:
+        "Read one page of another developer's whole session: every user and assistant message plus one line per tool call, without tool output. Start at page 1; the result says how many pages there are.",
+      inputSchema: {
+        sessionId: z.string(),
+        page: z.number().int().positive().default(1),
+      },
+    },
+    ({ sessionId, page }) => safely(() => getSessionTranscriptPage(sessionId, page)),
   );
 
   server.registerTool(

@@ -2,6 +2,7 @@ import { z } from "zod";
 
 const environmentSchema = z.object({
   DATABASE_URL: z.string().default("postgres://aim:aim@localhost:5432/aim"),
+  AIM_DEMO_MODE: z.stringbool().default(false),
   PORT: z.coerce.number().int().default(4100),
   AIM_TOKEN: z.string().optional(),
   ANTHROPIC_API_KEY: z.string().optional(),

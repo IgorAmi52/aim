@@ -8,7 +8,11 @@
     "worker": "tsx watch --env-file-if-exists=.env src/worker.ts",
     "database:generate": "drizzle-kit generate",
     "database:migrate": "tsx --env-file-if-exists=.env src/database/migrate.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "demo": "pnpm run \"/^demo:(api|worker)$/\"",
+    "demo:api": "tsx watch --env-file=.env.demo src/api.ts",
+    "demo:worker": "tsx watch --env-file=.env.demo src/worker.ts",
+    "demo:seed": "tsx --env-file=.env.demo src/seedDemo.ts"
   },
   "dependencies": {
     "@aim/shared": "workspace:*",

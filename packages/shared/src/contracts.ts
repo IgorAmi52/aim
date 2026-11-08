@@ -113,6 +113,13 @@ export const sessionContextResponseSchema = z.object({
   excerpts: z.array(z.string()),
 });
 
+export const sessionTranscriptPageResponseSchema = z.object({
+  sessionId: z.string(),
+  page: z.number().int(),
+  pageCount: z.number().int(),
+  text: z.string(),
+});
+
 export const sessionListResponseSchema = z.object({
   sessions: z.array(
     z.object({
@@ -145,4 +152,5 @@ export type MatchActionRequest = z.infer<typeof matchActionRequestSchema>;
 export type SearchRequest = z.infer<typeof searchRequestSchema>;
 export type SearchResponse = z.infer<typeof searchResponseSchema>;
 export type SessionContextResponse = z.infer<typeof sessionContextResponseSchema>;
+export type SessionTranscriptPageResponse = z.infer<typeof sessionTranscriptPageResponseSchema>;
 export type SessionListResponse = z.infer<typeof sessionListResponseSchema>;

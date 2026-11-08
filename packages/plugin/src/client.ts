@@ -9,6 +9,7 @@ import type {
   SearchResponse,
   SessionContextResponse,
   SessionListResponse,
+  SessionTranscriptPageResponse,
 } from "@aim/shared";
 import { readServerSettings } from "./configuration";
 
@@ -70,6 +71,10 @@ export function searchSessions(request: SearchRequest): Promise<SearchResponse> 
 export function getSessionContext(sessionId: string, focus: string | undefined): Promise<SessionContextResponse> {
   const query = focus ? `?focus=${encodeURIComponent(focus)}` : "";
   return requestJson("GET", `/sessions/${encodeURIComponent(sessionId)}/context${query}`);
+}
+
+export function getSessionTranscriptPage(sessionId: string, page: number): Promise<SessionTranscriptPageResponse> {
+  return requestJson("GET", `/sessions/${encodeURIComponent(sessionId)}/transcript?page=${page}`);
 }
 
 export function listSessions(personEmail: string): Promise<SessionListResponse> {

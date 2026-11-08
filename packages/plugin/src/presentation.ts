@@ -3,6 +3,7 @@ import type { Match } from "@aim/shared";
 export const toolNames = {
   search: "mcp__plugin_aim_aim__search",
   getSessionContext: "mcp__plugin_aim_aim__get_session_context",
+  readSessionTranscript: "mcp__plugin_aim_aim__read_session_transcript",
   reportMatchAction: "mcp__plugin_aim_aim__report_match_action",
 };
 
@@ -55,7 +56,7 @@ Call AskUserQuestion once, with one question per match (header "aim"). In each q
 
 Then, for each answer:
 1. Call ${toolNames.reportMatchAction} with the matchId and the action (peer_agent, slack, details or ignored).
-2. peer_agent: launch the ${peerAgentType} subagent with the sessionId, the owner's name, what the developer is working on, and the developer's question (ask for one if it is not obvious from the task). Relay its answer, including any proposed agreement.
+2. peer_agent: do not launch the agent yet and do not come up with a question yourself. Reply with only one short line asking what the developer wants to know, for example "What would you like to ask <first name>'s session?", and stop. When the developer answers, launch the ${peerAgentType} subagent with the sessionId, the owner's name, what the developer is working on, and the developer's question exactly as they wrote it. Show its answer as it is, including any proposed agreement. From then on, treat it as a conversation with the owner's session: send every follow-up question about the owner's work to that same ${peerAgentType} agent (continue it, do not start a new one) and show its answers as they are, until the developer says they are done or moves on to something else.
 3. slack: call ${toolNames.getSessionContext} for the sessionId, then draft a short message from the developer to the owner: what the developer is working on, the overlap, and one concrete question. Show the draft and the Slack DM link. Never send anything yourself.
 4. details: call ${toolNames.getSessionContext} for the sessionId and summarize the intent, approach, decisions and outcome.
 5. ignored: say nothing more about it.

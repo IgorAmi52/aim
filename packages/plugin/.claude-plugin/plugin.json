@@ -1,7 +1,7 @@
 {
   "name": "aim",
   "displayName": "aim",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Tells you when a teammate already worked on your problem or is changing the same code right now, and connects you with them or their session.",
   "userConfig": {
     "server_url": {

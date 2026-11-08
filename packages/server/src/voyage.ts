@@ -1,5 +1,6 @@
 import { configuration } from "./configuration";
 import { embeddingDimensions } from "./database/schema";
+import { demoEmbedding, demoRerank } from "./demo";
 
 async function callVoyage<Response>(endpoint: string, body: object): Promise<Response> {
   const response = await fetch(`https://api.voyageai.com/v1/${endpoint}`, {
@@ -17,6 +18,9 @@ async function callVoyage<Response>(endpoint: string, body: object): Promise<Res
 }
 
 export async function embedTexts(texts: string[], inputType: "document" | "query"): Promise<number[][]> {
+  if (configuration.AIM_DEMO_MODE) {
+    return texts.map(demoEmbedding);
+  }
   const response = await callVoyage<{ data: Array<{ index: number; embedding: number[] }> }>("embeddings", {
     model: configuration.AIM_EMBEDDING_MODEL,
     input: texts,
@@ -32,6 +36,9 @@ export async function embedText(text: string, inputType: "document" | "query"): 
 }
 
 export async function rerankDocuments(query: string, documents: string[], topCount: number): Promise<number[]> {
+  if (configuration.AIM_DEMO_MODE) {
+    return demoRerank(query, documents, topCount);
+  }
   const response = await callVoyage<{ data: Array<{ index: number; relevance_score: number }> }>("rerank", {
     model: configuration.AIM_RERANK_MODEL,
     query,

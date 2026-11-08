@@ -2,6 +2,7 @@ import type { SlackContact } from "@aim/shared";
 import { eq } from "drizzle-orm";
 import { configuration } from "./configuration";
 import { database } from "./database/client";
+import { demoSlackContact } from "./demo";
 import { people, type PersonRow } from "./database/schema";
 
 const lookupRetryMilliseconds = 24 * 60 * 60_000;
@@ -38,6 +39,9 @@ async function slackUserId(person: PersonRow): Promise<string | null> {
 }
 
 export async function resolveSlackContact(person: PersonRow): Promise<SlackContact | null> {
+  if (configuration.AIM_DEMO_MODE) {
+    return demoSlackContact();
+  }
   if (!configuration.SLACK_BOT_TOKEN) {
     return null;
   }

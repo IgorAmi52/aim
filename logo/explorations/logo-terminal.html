@@ -1,0 +1,293 @@
+<title>aim Terminal Wordmarks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Fira+Code:wght@600&family=Geist:wght@400;600&family=Geist+Mono:wght@400;600&family=IBM+Plex+Mono:wght@600&family=JetBrains+Mono:wght@600&family=Major+Mono+Display&family=Martian+Mono:wght@600&family=Space+Mono:wght@700&family=VT323&display=swap">
+<style>
+  /* Layout: two specimen grids (typeset aim in terminal fonts, then hand-drawn terminal ligatures); each card = light and dark panel + caption. */
+  :root {
+    --bg: #f6f5fa;
+    --surface: #ffffff;
+    --ink: #16142a;
+    --muted: #5d5a78;
+    --line: #e4e1ef;
+    --purple-on-light: #5b2bd6;
+    --purple-on-dark: #a68cff;
+    --panel-light-bg: #ffffff;
+    --panel-light-ink: #16142a;
+    --panel-dark-bg: #14121f;
+    --panel-dark-ink: #f1effa;
+    --font-display: "Geist", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "Geist", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f0d18;
+      --surface: #171523;
+      --ink: #f1effa;
+      --muted: #a29fbd;
+      --line: #2a2740;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f0d18;
+    --surface: #171523;
+    --ink: #f1effa;
+    --muted: #a29fbd;
+    --line: #2a2740;
+    color-scheme: dark;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 48px 64px;
+    display: grid;
+    gap: 40px;
+  }
+  header, .section-head {
+    display: grid;
+    gap: 8px;
+    max-width: 64ch;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  header p, .section-head p {
+    margin: 0;
+    color: var(--muted);
+  }
+  section {
+    display: grid;
+    gap: 18px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-width: 0;
+  }
+  .panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .panel {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3;
+    max-width: 100%;
+  }
+  .panel svg {
+    width: 78%;
+    height: auto;
+  }
+  .panel.light {
+    background: var(--panel-light-bg);
+    color: var(--panel-light-ink);
+    --mark-accent: var(--purple-on-light);
+  }
+  .panel.dark {
+    background: var(--panel-dark-bg);
+    color: var(--panel-dark-ink);
+    --mark-accent: var(--purple-on-dark);
+  }
+  .caption {
+    padding: 14px 18px 18px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 4px;
+    align-content: start;
+  }
+  .caption h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .caption p {
+    margin: 0;
+    color: var(--muted);
+  }
+  footer {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 64ch;
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="square-ligature" viewBox="0 6 84 52">
+      <path d="M29 41 H10.5 V53 H29" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="miter"/>
+      <path d="M12 27.5 H29" fill="none" stroke="currentColor" stroke-width="7"/>
+      <path d="M42 56.5 V27.5 H77 V56.5 M59.5 27.5 V56.5" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="miter"/>
+      <path d="M32.5 24 V56.5" fill="none" stroke-width="7" style="stroke: var(--mark-accent)"/>
+      <rect x="29" y="11" width="7" height="7" style="fill: var(--mark-accent)"/>
+    </symbol>
+    <symbol id="square-full" viewBox="0 6 98 52">
+      <path d="M29 41 H10.5 V53 H29 M12 27.5 H32.5 V56.5" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="miter"/>
+      <path d="M46.5 27.5 V56.5" fill="none" stroke-width="7" style="stroke: var(--mark-accent)"/>
+      <rect x="43" y="11" width="7" height="7" style="fill: var(--mark-accent)"/>
+      <path d="M58 56.5 V27.5 H91 V56.5 M74.5 27.5 V56.5" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="miter"/>
+    </symbol>
+    <symbol id="pixel-ligature" viewBox="0 0 82 58"><g fill="currentColor"><rect x="14" y="20" width="6" height="6"/><rect x="20" y="20" width="6" height="6"/><rect x="26" y="20" width="6" height="6"/><rect x="44" y="20" width="6" height="6"/><rect x="50" y="20" width="6" height="6"/><rect x="62" y="20" width="6" height="6"/><rect x="44" y="26" width="6" height="6"/><rect x="56" y="26" width="6" height="6"/><rect x="68" y="26" width="6" height="6"/><rect x="14" y="32" width="6" height="6"/><rect x="20" y="32" width="6" height="6"/><rect x="26" y="32" width="6" height="6"/><rect x="44" y="32" width="6" height="6"/><rect x="56" y="32" width="6" height="6"/><rect x="68" y="32" width="6" height="6"/><rect x="8" y="38" width="6" height="6"/><rect x="44" y="38" width="6" height="6"/><rect x="56" y="38" width="6" height="6"/><rect x="68" y="38" width="6" height="6"/><rect x="14" y="44" width="6" height="6"/><rect x="20" y="44" width="6" height="6"/><rect x="26" y="44" width="6" height="6"/><rect x="44" y="44" width="6" height="6"/><rect x="56" y="44" width="6" height="6"/><rect x="68" y="44" width="6" height="6"/></g><g style="fill: var(--mark-accent)"><rect x="32" y="8" width="6" height="6"/><rect x="32" y="20" width="6" height="6"/><rect x="32" y="26" width="6" height="6"/><rect x="32" y="32" width="6" height="6"/><rect x="32" y="38" width="6" height="6"/><rect x="32" y="44" width="6" height="6"/></g></symbol>
+    <symbol id="pixel-full" viewBox="0 0 106 58"><g fill="currentColor"><rect x="14" y="20" width="6" height="6"/><rect x="20" y="20" width="6" height="6"/><rect x="26" y="20" width="6" height="6"/><rect x="62" y="20" width="6" height="6"/><rect x="68" y="20" width="6" height="6"/><rect x="80" y="20" width="6" height="6"/><rect x="32" y="26" width="6" height="6"/><rect x="62" y="26" width="6" height="6"/><rect x="74" y="26" width="6" height="6"/><rect x="86" y="26" width="6" height="6"/><rect x="14" y="32" width="6" height="6"/><rect x="20" y="32" width="6" height="6"/><rect x="26" y="32" width="6" height="6"/><rect x="32" y="32" width="6" height="6"/><rect x="62" y="32" width="6" height="6"/><rect x="74" y="32" width="6" height="6"/><rect x="86" y="32" width="6" height="6"/><rect x="8" y="38" width="6" height="6"/><rect x="32" y="38" width="6" height="6"/><rect x="62" y="38" width="6" height="6"/><rect x="74" y="38" width="6" height="6"/><rect x="86" y="38" width="6" height="6"/><rect x="14" y="44" width="6" height="6"/><rect x="20" y="44" width="6" height="6"/><rect x="26" y="44" width="6" height="6"/><rect x="32" y="44" width="6" height="6"/><rect x="62" y="44" width="6" height="6"/><rect x="74" y="44" width="6" height="6"/><rect x="86" y="44" width="6" height="6"/></g><g style="fill: var(--mark-accent)"><rect x="44" y="8" width="6" height="6"/><rect x="44" y="20" width="6" height="6"/><rect x="44" y="26" width="6" height="6"/><rect x="44" y="32" width="6" height="6"/><rect x="44" y="38" width="6" height="6"/><rect x="44" y="44" width="6" height="6"/></g></symbol>
+  </defs>
+</svg>
+
+<main class="page">
+  <header>
+    <span class="eyebrow">aim · terminal wordmarks</span>
+    <h1>aim in terminal type</h1>
+    <p>The whole i in deep purple, set in nine monospace fonts, then the am ligature redrawn by hand in two terminal styles, because no font can share one stem between the a and the i.</p>
+  </header>
+
+  <section aria-labelledby="typeset">
+    <div class="section-head">
+      <span class="eyebrow">Typeset</span>
+      <h2 id="typeset">aim in monospace fonts</h2>
+      <p>Straight from Google Fonts with only the i recoloured. Any of these can be outlined into a fixed logo file once you pick one.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="panels">
+          <div class="panel light"><svg viewBox="0 0 120 80" role="img" aria-label="aim in JetBrains Mono"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 600; font-size: 40px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+          <div class="panel dark"><svg viewBox="0 0 120 80" aria-hidden="true"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 600; font-size: 40px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+        </div>
+        <div class="caption"><h3>JetBrains Mono</h3><p>The default terminal font for many developers. Tall x-height, calm and very legible.</p></div>
+      </article>
+      <article class="card">
+        <div class="panels">
+          <div class="panel light"><svg viewBox="0 0 120 80" role="img" aria-label="aim in IBM Plex Mono"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 600; font-size: 40px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+          <div class="panel dark"><svg viewBox="0 0 120 80" aria-hidden="true"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 600; font-size: 40px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+        </div>
+        <div class="caption"><h3>IBM Plex Mono</h3><p>Slab-like feet and a corporate, engineered tone. Feels like serious infrastructure.</p></div>
+      </article>
+      <article class="card">
+        <div class="panels">
+          <div class="panel light"><svg viewBox="0 0 120 80" role="img" aria-label="aim in Space Mono"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'Space Mono', ui-monospace, monospace; font-weight: 700; font-size: 40px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+          <div class="panel dark"><svg viewBox="0 0 120 80" aria-hidden="true"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'Space Mono', ui-monospace, monospace; font-weight: 700; font-size: 40px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+        </div>
+        <div class="caption"><h3>Space Mono</h3><p>Retro-futuristic with a geometric a. The most characterful of the clean ones.</p></div>
+      </article>
+      <article class="card">
+        <div class="panels">
+          <div class="panel light"><svg viewBox="0 0 120 80" role="img" aria-label="aim in Martian Mono"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'Martian Mono', ui-monospace, monospace; font-weight: 600; font-size: 34px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+          <div class="panel dark"><svg viewBox="0 0 120 80" aria-hidden="true"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'Martian Mono', ui-monospace, monospace; font-weight: 600; font-size: 34px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+        </div>
+        <div class="caption"><h3>Martian Mono</h3><p>Wide and squarish, like a modern system UI. Strong at small sizes.</p></div>
+      </article>
+      <article class="card">
+        <div class="panels">
+          <div class="panel light"><svg viewBox="0 0 120 80" role="img" aria-label="aim in DM Mono"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'DM Mono', ui-monospace, monospace; font-weight: 500; font-size: 40px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+          <div class="panel dark"><svg viewBox="0 0 120 80" aria-hidden="true"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'DM Mono', ui-monospace, monospace; font-weight: 500; font-size: 40px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+        </div>
+        <div class="caption"><h3>DM Mono</h3><p>Soft and light, closer to a product wordmark than a terminal.</p></div>
+      </article>
+      <article class="card">
+        <div class="panels">
+          <div class="panel light"><svg viewBox="0 0 120 80" role="img" aria-label="aim in Fira Code"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'Fira Code', ui-monospace, monospace; font-weight: 600; font-size: 40px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+          <div class="panel dark"><svg viewBox="0 0 120 80" aria-hidden="true"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'Fira Code', ui-monospace, monospace; font-weight: 600; font-size: 40px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+        </div>
+        <div class="caption"><h3>Fira Code</h3><p>The ligature-coding font. Familiar to Claude Code users, slightly narrow.</p></div>
+      </article>
+      <article class="card">
+        <div class="panels">
+          <div class="panel light"><svg viewBox="0 0 120 80" role="img" aria-label="aim in Geist Mono"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'Geist Mono', ui-monospace, monospace; font-weight: 600; font-size: 40px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+          <div class="panel dark"><svg viewBox="0 0 120 80" aria-hidden="true"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'Geist Mono', ui-monospace, monospace; font-weight: 600; font-size: 40px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+        </div>
+        <div class="caption"><h3>Geist Mono</h3><p>Neutral and crisp, matches the Geist used on these pages.</p></div>
+      </article>
+      <article class="card">
+        <div class="panels">
+          <div class="panel light"><svg viewBox="0 0 120 80" role="img" aria-label="aim in VT323"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'VT323', ui-monospace, monospace; font-weight: 400; font-size: 58px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+          <div class="panel dark"><svg viewBox="0 0 120 80" aria-hidden="true"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'VT323', ui-monospace, monospace; font-weight: 400; font-size: 58px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+        </div>
+        <div class="caption"><h3>VT323</h3><p>Old CRT terminal pixels. Nostalgic and playful, very terminal.</p></div>
+      </article>
+      <article class="card">
+        <div class="panels">
+          <div class="panel light"><svg viewBox="0 0 120 80" role="img" aria-label="aim in Major Mono Display"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'Major Mono Display', ui-monospace, monospace; font-weight: 400; font-size: 34px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+          <div class="panel dark"><svg viewBox="0 0 120 80" aria-hidden="true"><text x="60" y="40" text-anchor="middle" dominant-baseline="middle" style="font-family: 'Major Mono Display', ui-monospace, monospace; font-weight: 400; font-size: 34px; fill: currentColor">a<tspan style="fill: var(--mark-accent)">i</tspan>m</text></svg></div>
+        </div>
+        <div class="caption"><h3>Major Mono Display</h3><p>Geometric display mono with unusual lowercase forms. The boldest choice.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="drawn">
+    <div class="section-head">
+      <span class="eyebrow">Drawn</span>
+      <h2 id="drawn">The am ligature, terminal style</h2>
+      <p>Hand-built so the a's stem can be the purple i. Each ligature sits next to a matching full aim.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="panels">
+          <div class="panel light"><svg viewBox="0 6 84 52" role="img" aria-label="Square ligature"><use href="#square-ligature"/></svg></div>
+          <div class="panel dark"><svg viewBox="0 6 84 52" role="img" aria-label="Square ligature"><use href="#square-ligature"/></svg></div>
+        </div>
+        <div class="caption"><h3>Square ligature</h3><p>The a and i share one purple stem, drawn with square ends and a square dot like a terminal glyph. Reads as am with a lit i inside.</p></div>
+      </article>
+      <article class="card">
+        <div class="panels">
+          <div class="panel light"><svg viewBox="0 6 98 52" role="img" aria-label="Square aim"><use href="#square-full"/></svg></div>
+          <div class="panel dark"><svg viewBox="0 6 98 52" role="img" aria-label="Square aim"><use href="#square-full"/></svg></div>
+        </div>
+        <div class="caption"><h3>Square aim</h3><p>The same square letters with the i standing on its own, for comparison.</p></div>
+      </article>
+      <article class="card">
+        <div class="panels">
+          <div class="panel light"><svg viewBox="0 0 82 58" role="img" aria-label="Pixel ligature"><use href="#pixel-ligature"/></svg></div>
+          <div class="panel dark"><svg viewBox="0 0 82 58" role="img" aria-label="Pixel ligature"><use href="#pixel-ligature"/></svg></div>
+        </div>
+        <div class="caption"><h3>Pixel ligature</h3><p>The ligature on a pixel grid, like a bitmap terminal font. The purple column is the shared stem.</p></div>
+      </article>
+      <article class="card">
+        <div class="panels">
+          <div class="panel light"><svg viewBox="0 0 106 58" role="img" aria-label="Pixel aim"><use href="#pixel-full"/></svg></div>
+          <div class="panel dark"><svg viewBox="0 0 106 58" role="img" aria-label="Pixel aim"><use href="#pixel-full"/></svg></div>
+        </div>
+        <div class="caption"><h3>Pixel aim</h3><p>Full aim in the same pixel grid with a separate purple i.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <p>Tell me the font or drawn style you like and whether the ligature or the full aim reads better, and I'll tune the spacing and export the final files.</p>
+  </footer>
+</main>
